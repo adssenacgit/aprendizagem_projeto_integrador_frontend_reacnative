@@ -38,9 +38,11 @@ export default function ListBadgesScreen() {
       flexDirection: 'row',
       flexWrap: 'wrap',
       gap: 20,
-      marginBottom: 50,
+      marginVertical:30,
+      backgroundColor: '#ffffff',
     },
     card: {
+      flex:1,
       alignItems: 'center',
       justifyContent: 'center',
       width: 130,
@@ -75,6 +77,22 @@ export default function ListBadgesScreen() {
     setSearch(text);
   };
 
+  const viewTemplateRight = (): JSX.Element => {
+    return (
+        <>
+          <Icon
+              as={<MaterialIcons name='filter-alt' />}
+              size={6}
+              mr='2'
+              color='muted.400'
+              onPress={(e) => {
+                setShowModal(true);
+              }}
+          />
+        </>
+  );
+  };
+
   const searchTag = (badge: Badge['descricao']) => {
     const newData = masterData.filter((item) => {
       if (item.descricao === badge) {
@@ -93,32 +111,12 @@ export default function ListBadgesScreen() {
             if (filteredData !== null) {
               return (
                 <View key={badge.id}>
-                  <ButtonNativeBase
-                    borderRadius={'2xl'}
-                    _android={{
-                      bg: 'contrastThreshold',
-                      _text: {
-                        color: 'coolGray.800',
-                        fontWeight: 'medium',
-                      },
-                    }}
-                    _pressed={{
-                      bg: 'coolGray.300',
-                      _text: {
-                        color: 'warmGray.100',
-                      },
-                    }}
-                    onPress={(e) => {
-                      handlePress(badge);
-                    }}
-                  >
-                    <Card style={styles.card} elevation={5} mode={'elevated'}>
-                      <Card.Cover style={styles.image} source={{ uri: `data:image/png;base64,${badge.imagem}` }} />
+                    <Card style={styles.card} elevation={5} mode={'elevated'} onPress={(e)=>handlePress(badge)}>
                       <Card.Content>
+                        <Card.Cover style={styles.image} source={{ uri: `data:image/png;base64,${badge.imagem}` }} />
                         <Text>{badge.descricao}</Text>
                       </Card.Content>
                     </Card>
-                  </ButtonNativeBase>
                 </View>
               );
             }
@@ -130,20 +128,6 @@ export default function ListBadgesScreen() {
 
   const viewTemplateLeft = (): JSX.Element => {
     return <Icon as={<MaterialIcons name='search' />} size={6} ml='2' color='muted.400' />;
-  };
-
-  const viewTemplateRight = (): JSX.Element => {
-    return (
-      <Icon
-        as={<MaterialIcons name='filter-alt' />}
-        size={6}
-        mr='2'
-        color='muted.400'
-        onPress={(e) => {
-          setShowModal(true);
-        }}
-      />
-    );
   };
 
   return (

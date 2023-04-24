@@ -1,11 +1,16 @@
-import { Badge, Button, Modal, ScrollView, Stack } from 'native-base';
+import { Button, Modal } from 'native-base';
 import React, { useState } from 'react';
-import { getAllBadges } from '../../common/services/badge/BadgeService';
 import { ButtonNativeBase } from './Button';
+import {StyleSheet, View} from "react-native";
 
 export function ModalNativeBase() {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { badges } = getAllBadges();
+
+  const styles = StyleSheet.create({
+    flex: {
+      gap:10
+    }
+  })
 
   const ViewModal: JSX.Element = (
     <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
@@ -13,19 +18,22 @@ export function ModalNativeBase() {
         <Modal.CloseButton />
         <Modal.Header>Filtrar por</Modal.Header>
         <Modal.Body>
-          <ScrollView>
-            <Stack direction='row' mb='2' mt='1' space={3} flexWrap={'wrap'}>
-              {badges.map((badge) => {
-                return (
-                  <ButtonNativeBase onPress={(e) => alert(badge.descricao)} colorScheme='none'>
-                    <Badge colorScheme='success' alignSelf='center' key={badge.id}>
-                      {badge.descricao}
-                    </Badge>
-                  </ButtonNativeBase>
-                );
-              })}
-            </Stack>
-          </ScrollView>
+         <View style={styles.flex}>
+           <ButtonNativeBase borderRadius={20} onPress={(e) => {
+             alert(e.target)
+             console.log(e.target)
+           }}>
+             Tag da badge
+           </ButtonNativeBase>
+
+           <ButtonNativeBase borderRadius={20} onPress={(e) => alert(e.target.value)}>
+             Nível da badge
+           </ButtonNativeBase>
+
+           <ButtonNativeBase borderRadius={20} onPress={(e) => alert(e.target.value)}>
+             Tipo da badge
+           </ButtonNativeBase>
+         </View>
         </Modal.Body>
         <Modal.Footer>
           <Button.Group space={2}>
