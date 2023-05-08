@@ -1,17 +1,17 @@
-import { MaterialIcons } from '@expo/vector-icons';
-import { Link, useNavigation, useRouter } from 'expo-router';
-import { Icon, NativeBaseProvider } from 'native-base';
-import { ScrollView, StyleSheet } from 'react-native';
-import { Card } from 'react-native-paper';
+import {MaterialIcons} from '@expo/vector-icons';
+import {useRouter} from 'expo-router';
+import {Icon, NativeBaseProvider} from 'native-base';
+import {ScrollView, StyleSheet} from 'react-native';
+import {Card} from 'react-native-paper';
 
 import EditScreenInfo from '../../../components/custom/EditScreenInfo';
-import { ButtonNativeBase } from '../../../components/nativeBase/Button';
-import { InputNativeBase } from '../../../components/nativeBase/Input';
-import { ModalNativeBase } from '../../../components/nativeBase/Modal';
-import { Text, View } from '../../../components/custom/Themed';
-import { Badge } from '../../../common/model/badge/Badge';
-import { getAllBadges } from '../../../common/services/badge/BadgeService';
-import { routes } from '../../../common/routes/routes';
+import {ButtonNativeBase} from '../../../components/nativeBase/Button';
+import {InputNativeBase} from '../../../components/nativeBase/Input';
+import {ModalNativeBase} from '../../../components/nativeBase/Modal';
+import {Text, View} from '../../../components/custom/Themed';
+import {Badge} from '../../../common/model/badge/Badge';
+import {getAllBadges} from '../../../common/services/badge/BadgeService';
+import {routes} from '../../../common/routes/routes';
 
 export default function ListBadgesScreen() {
   const { badges, setBadges, search, setSearch, filteredData, setFilteredData, masterData, setMasterData } =
@@ -59,6 +59,7 @@ export default function ListBadgesScreen() {
 
   function handlePress(badge: Badge) {
     router.push(`${ROUTES.badge.detail}`);
+    router.setParams({"id": badge.id.toString() ?? '5'})
   }
 
   const searchFilter = (text: string) => {
@@ -111,7 +112,7 @@ export default function ListBadgesScreen() {
             if (filteredData !== null) {
               return (
                 <View key={badge.id}>
-                    <Card style={styles.card} elevation={5} mode={'elevated'} onPress={(e)=>handlePress(badge)}>
+                    <Card style={styles.card} elevation={5} mode={'elevated'} onPress={(e)=> handlePress(badge)}>
                       <Card.Content>
                         <Card.Cover style={styles.image} source={{ uri: `data:image/png;base64,${badge.imagem}` }} />
                         <Text>{badge.descricao}</Text>
