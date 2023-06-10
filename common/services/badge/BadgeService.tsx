@@ -131,3 +131,33 @@ export function getBadgeById(id: number | any) {
 
     return {badge, isLoading}
 }
+
+export function createBadge(badgeModel: Badge) {
+    const [badge, setBadges] = useState<Badge>(new Badge());
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        API.post<Badge>(`/Badge`, badgeModel)
+            .then((response: AxiosResponse) => {
+                setBadges(response.data);
+            })
+            .catch((error: AxiosError<Badge>) => {
+                switch (error.response?.status) {
+                    case 404: {
+                        alert('Erro de endereçamento');
+                        break;
+                    }
+                    case 400: {
+                        alert('Erro de cliente');
+                        break;
+                    }
+                    case 500: {
+                        alert('Erro de servidor');
+                    }
+                }
+            })
+            .finally(() => setIsLoading(true));
+    }, [badgeModel]);
+
+    return {badge, isLoading}
+}
