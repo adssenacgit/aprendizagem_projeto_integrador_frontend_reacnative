@@ -25,7 +25,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name={ROUTES.badge.list}
         options={{
-          title: 'Tab One',
+          title: 'List Badges',
           tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
           headerRight: () => (
             <Link href='/modal' asChild>
@@ -44,19 +44,19 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='two'
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name={`${ROUTES.badge.detail}`}
         options={{
           title: 'Detail badge',
           tabBarIcon: ({ color }) => <TabBarIcon name='desktop' color={color} />,
         }}
       />
+    <Tabs.Screen
+    name={ROUTES.badge.create}
+    options={{
+        title: 'Create Badge',
+            tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+        }}
+    />
     </Tabs>
   );
 }
