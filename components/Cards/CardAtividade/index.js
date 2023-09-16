@@ -20,10 +20,8 @@ export function CardAtividade({ data }) {
   const image = `data:image/png;base64,${data.blob}`;
 
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={() => push(`/atividades/${data.id}`)}
-    >
+    
+      
         <View
           style={[
             styles.cardContainer,
@@ -45,20 +43,39 @@ export function CardAtividade({ data }) {
             <Text numberOfLines={3} style={styles.text}>
               {data.descricao}
             </Text>
+            <TouchableOpacity onPress={() => onPressButton(item.id)}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.buttonText}>Ir para Detalhes</Text>
+            </View>
+          </TouchableOpacity>
           </View>
+          
         </View>
-      </TouchableOpacity>
+        
+      
   );
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    backgroundColor: 'orange',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   container: {
     width: width - 20,
     paddingHorizontal: 10,
     // paddingHorizontal: width * 0.08,
   },
   cardContainer: {
-    height: width * 0.330,
+    
     gap: 5,
     backgroundColor: "#fff",
     borderRadius: 15,
