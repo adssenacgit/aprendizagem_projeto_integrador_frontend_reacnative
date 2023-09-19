@@ -114,6 +114,8 @@ export default function Atividade({ navigation, route }) {
           
           <Button title="Upload File" onPress={handleFileUpload} />
 
+          <Button title="View Concept"/>
+
           {fileUri && (
             <Text>Selected file: {fileUri}</Text>
           )}
