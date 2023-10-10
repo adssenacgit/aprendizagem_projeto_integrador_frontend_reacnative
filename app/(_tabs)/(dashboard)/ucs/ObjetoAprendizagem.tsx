@@ -50,7 +50,7 @@ export default function ObjetosDeAprendizagem() {
       <View style={styles.container}>
 
         <View style={styles.contentTitle}>
-          <Text style={styles.title}>Objetos de Aprendizagen</Text>
+          <Text style={styles.title}>Objetos de Aprendizagem</Text>
         </View>
 
         <View>

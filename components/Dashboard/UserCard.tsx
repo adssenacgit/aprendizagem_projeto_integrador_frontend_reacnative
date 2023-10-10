@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#02408D',
+    backgroundColor: '#092c4c',
     borderRadius: 15,
     width: '90%',
     shadowOffset: {width: 2, height: 4},
@@ -120,11 +120,11 @@ const styles = StyleSheet.create({
   },
   infoProgress: {
     fontSize: 12,
-    color: '#F5F5F5'
+    color: '#fff'
   },
   infoValue: {
     fontWeight: '700',
-    color: '#F7941D'
+    color: '#f2994a'
   },
   badgesContainer: {
     flexDirection: 'row',
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     borderRadius: 50
   },
   badgeNumber: {
-    backgroundColor: '#F7941D',
+    backgroundColor: '#f2994a',
     borderRadius: 50,
     height: 20,
     width: 20,

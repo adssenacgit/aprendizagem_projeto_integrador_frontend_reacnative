@@ -29,8 +29,8 @@ const ListaGrupo = (grupo: Grupo) => {
                 {grupo.unidadeCurricular.nome}
               </Text>
               <View style={{flexDirection: 'row', gap: 5, alignItems: 'center'}}>
-                <Ionicons name="school-outline" size={20} color="black" />
-                <Text>
+                <Ionicons name="school-outline" size={20} color="#333333" />
+                <Text style={{color: '#333333', fontFamily:'Poppins'}}>
                   Módulo {grupo.unidadeCurricular.numeroModulo}
                 </Text>
               </View>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: Colors.light.cardBackground,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderColor: 'lightgray',
+    borderColor: 'black',
     borderRadius: 15,
     gap: 8,
     
@@ -124,8 +124,10 @@ const styles = StyleSheet.create({
   },
   progressInfo: {
     //marginTop: 5,
+    color: '#333333'
   },
   progressStats: {
     alignItems: 'center',
+    
   }
 })
