@@ -7,6 +7,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Constants from 'expo-constants'
 import { getAllAtividades } from '../../core/services/atividade/AtividadeService';
 import { Atividade } from '../../models/Atividade';
+import { border } from 'native-base/lib/typescript/theme/styled-system';
 
 const  { width } = Dimensions.get('screen');
 const ProximasAtividades = () => {
@@ -19,13 +20,13 @@ const ProximasAtividades = () => {
       <TouchableOpacity onPress={() => router.push(`/atividades/${item.id}`)}>
         <View style={[styles.cardContainer, Platform.OS === "android" ? styles.cardContainerAndroid : styles.cardContainerIos]}>
           <View style={styles.cardHeaderContainer}>
-            <Feather name="book-open" color="orange" size={24}/>
+            <Feather style={styles.test} name="book-open" color="#333333" size={24}/>
             <View>
               <Text style={styles.title}>Prazo de entrega:</Text>
-              <Text style={styles.title}>{Moment(item.dataFim).format("llll")}</Text>
+              <Text style={styles.dataEntrega}>{Moment(item.dataFim).format("llll")}</Text>
             </View>
           </View>
-          <View style={styles.cardContentContainer}>
+          <View>
             <Text numberOfLines={3} style={styles.text}>{item.descricao}</Text>
           </View>
         </View>
@@ -72,10 +73,17 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "600",
     letterSpacing: -0.5,
+    fontFamily: 'PoppinsBold',
+    paddingLeft: 90
+  },
+  dataEntrega: {
+    color: '#333333',
+    textAlign: 'center'
   },
   title: {
     fontSize: 15,
-    fontWeight: '600'
+    fontWeight: '600',
+    textAlign: 'center'
   },
   container: {
     width: width,
@@ -98,16 +106,24 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   cardHeaderContainer: {
-    //backgroundColor: 'red',
-    //paddingHorizontal: 10,
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  cardContentContainer: {
-
+  text: {
+    color: '#333333'
   },
-  text: {}
+
+  test: {
+    paddingTop: 5,
+    textAlign: 'center',
+
+    width: 50,
+
+    borderWidth: 1.5,
+    borderRadius: 5,
+    backgroundColor: '#f2994a'
+  }
 });
 
 

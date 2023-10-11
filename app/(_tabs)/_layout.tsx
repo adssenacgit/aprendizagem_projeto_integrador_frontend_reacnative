@@ -23,28 +23,28 @@ const MenuInferior = () => {
             <TouchableOpacity
               onPress={() => router.push("/mensagens")}
               style={styles.icon}>
-              <Ionicons name="chatbubbles-outline" size={24} color="black" />
+              <Ionicons name="chatbubbles-outline" size={24} color="#333333" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => router.push("/Notificacoes")}
               style={styles.icon}>
-              <Ionicons name="md-notifications-outline" size={24} color="black" />
+              <Ionicons name="md-notifications-outline" size={24} color="#333333" />
             </TouchableOpacity>
           </View>
         ),
         headerStyle: {
-          backgroundColor: '#00408D',
+          backgroundColor: '#092c4c',
           height: 100
         },
         headerLeftContainerStyle: {
           paddingLeft: 20
         },
         headerRightContainerStyle: {
-          paddingRight: 20
+          paddingRight: 30
         },
         headerTitleStyle: {
-          fontFamily: 'Poppins',
-          color: '#fff'
+          fontFamily: 'PoppinsBold',
+          color: '#fff',
         },
         tabBarShowLabel: true,
       }}
@@ -145,11 +145,12 @@ const styles = StyleSheet.create({
   },
   titleSenac: {
     fontSize: 18,
-    color: 'white',
+    color: '#f2994a',
     fontFamily: 'PoppinsBold',
   },
   infoText: {
     color: 'white',
+    fontFamily: 'Poppins',
   },
   infoValue: {
     fontWeight: '700',
@@ -165,6 +166,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
-    backgroundColor: '#F59E0B'
+    backgroundColor: '#f2994a'
   }
 })

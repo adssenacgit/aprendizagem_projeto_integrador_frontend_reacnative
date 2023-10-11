@@ -70,13 +70,7 @@ export default function ListaUC() {
 const HeaderCursos = () => {
   return (
     <Text
-      style={{
-        paddingHorizontal: 30,
-        marginTop: 10,
-        fontSize: 24,
-        fontWeight: "600",
-        letterSpacing: -0.5,
-      }}
+      style={styles.textCurso}
     >
       Meus Cursos
     </Text>
@@ -88,4 +82,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.light.background,
   },
+
+  textCurso: {
+    paddingHorizontal: 115,
+    marginTop: 10,
+    fontSize: 24,
+    fontWeight: "600",
+    fontFamily: 'PoppinsBold',
+    color: '#000000',
+  }
+  
 });
