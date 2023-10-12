@@ -1,11 +1,11 @@
 import 'moment/locale/pt-br';
-
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import Moment from 'moment';
 import React, { useState } from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Atividade } from '../../../models/Atividade';
 
 const { width } = Dimensions.get("screen");
 
@@ -16,7 +16,6 @@ export function CardAtividade({ data }) {
   const [isSelected, setSelection] = useState(false);
 
   const descricao = data.descricao;
-
   const image = `data:image/png;base64,${data.blob}`;
 
   return (
@@ -43,11 +42,13 @@ export function CardAtividade({ data }) {
             <Text numberOfLines={3} style={styles.text}>
               {data.descricao}
             </Text>
-            <TouchableOpacity onPress={() => onPressButton(item.id)}>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>Ir para Detalhes</Text>
-            </View>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => push(`/atividades/${data.id}`)}>
+                <View style={styles.buttonContainer}>
+                  <Text style={styles.buttonText}>Ir para Detalhes</Text>
+                </View>
+            </TouchableOpacity>
+
+
           </View>
           
         </View>
