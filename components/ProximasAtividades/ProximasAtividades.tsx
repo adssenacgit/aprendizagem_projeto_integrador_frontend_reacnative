@@ -39,6 +39,7 @@ const ProximasAtividades = () => {
         <Text style={styles.headerTitle}>
           Atividades
         </Text>
+        
         <Link href={'/atividades'} style={{backgroundColor: 'transparent', padding: 5}}>
           <Entypo name="list" size={24} color="orange" />
         </Link>

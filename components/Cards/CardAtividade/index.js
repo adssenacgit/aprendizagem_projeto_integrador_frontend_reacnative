@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import Moment from 'moment';
 import React, { useState } from 'react';
-import { Atividade } from '../../../models/Atividade';
+
 
 const { width } = Dimensions.get("screen");
 
@@ -17,10 +17,16 @@ export function CardAtividade({ data }) {
 
   const descricao = data.descricao;
   const image = `data:image/png;base64,${data.blob}`;
+  
+  const handleNavigation = () => {
+    navigation.navigate('Atividades');
+  };
+  
+
 
   return (
+  
     
-      
         <View
           style={[
             styles.cardContainer,
@@ -29,6 +35,7 @@ export function CardAtividade({ data }) {
               : styles.cardContainerIos,
           ]}
         >
+         
           <View style={styles.cardHeaderContainer}>
             <Feather name="book-open" color="orange" size={30} />
             <View>
@@ -43,17 +50,19 @@ export function CardAtividade({ data }) {
               {data.descricao}
             </Text>
             <TouchableOpacity onPress={() => push(`/atividades/${data.id}`)}>
-                <View style={styles.buttonContainer}>
-                  <Text style={styles.buttonText}>Ir para Detalhes</Text>
+            <View style={styles.iconSeta}>
+                <Feather name="book-open" color="orange" size={30} />
                 </View>
             </TouchableOpacity>
 
 
+
           </View>
           
-        </View>
+        </View> 
+       
+       
         
-      
   );
 }
 
@@ -102,4 +111,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '600'
   },
+  iconSeta:{
+    marginLeft: 300, 
+    fontSize: 16,
+  }
 });
