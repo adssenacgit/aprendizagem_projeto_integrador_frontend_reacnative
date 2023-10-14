@@ -4,7 +4,8 @@ import { FlatList, StyleSheet, Text, View,TouchableOpacity  } from "react-native
 import { CardAtividade } from "../../../../components/Cards/CardAtividade";
 import { Atividade } from "../../../../models/Atividade";
 import { API } from "../../../../http/API";
-import 'primeicons/primeicons.css';
+import { AntDesign } from '@expo/vector-icons';
+import moment from "moment";
         
 
 export default function Atividades(){
@@ -12,17 +13,49 @@ export default function Atividades(){
   const [atividades, setAtividades] = useState<Atividade[]>([]);
   const params = useLocalSearchParams();
   const { id, descricao } = useLocalSearchParams();
+  const [filterDate, setFilterDate] = useState(null);
   
+  const [ordenarPorMaisRecente, setOrdenarPorMaisRecente] = useState(true);
+
+
+
+
+
+  const handleDateFilter = () => {
+    
+  const atividadesOrdenadas = atividades.slice().sort((a, b) => {
+    const dataA = new Date(a.dataFim).getTime();
+    const dataB = new Date(b.dataFim).getTime();
+    const ordenacao = ordenarPorMaisRecente ? dataB - dataA : dataA - dataB;
+    return ordenacao;
+  });
+
+  setAtividades(atividadesOrdenadas);
+  setOrdenarPorMaisRecente((prevState) => !prevState);
+  
+  };
+
+
+
+
   useEffect(() => {
     API.get(`Atividade`).then(({data}) => {
+      console.log('Dados recebidos:', data);
       setAtividades(data)
+    })
+    .catch((error) =>{
+      console.error('Erro na solicitacao API: ', error);
     })
   }, []);
 
 
+
+ 
+
+
   return (
     <View style={styles.container}>
-      <i className="pi-filter" style={{ fontSize: '2.5rem' }}></i>
+      
       <View style={styles.rota}>
       <TouchableOpacity
           style={styles.rotaItem}
@@ -37,11 +70,19 @@ export default function Atividades(){
         >
           <Text style={styles.rotaText}>Atividades</Text>
         </TouchableOpacity>
+
+        <Text style={styles.textIcon}>por data</Text>
+        <TouchableOpacity onPress={handleDateFilter}>
+          
+          <AntDesign  name="filter" size={30} color="black" style={styles.iconStyle} />
+        </TouchableOpacity>
+
       </View>
+
       <FlatList
-        data={atividades}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => <CardAtividade data={item} />}
+         data={atividades}
+         keyExtractor={(item) => item.id.toString()}
+         renderItem={({ item }) => <CardAtividade data={item} />}
       />
     </View>
   );
@@ -55,7 +96,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 10,
     
-    alignItems: "center",
+    
   },
   rota: {
     
@@ -68,13 +109,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 1,
     cursor: "pointer", 
+    marginTop:10,
   },
   rotaText: {
     
- 
+    marginTop:10,
     textDecorationLine: "underline",
   },
   rotaSeparator: {
+    marginTop:22,
     paddingHorizontal: -10, // Adicione espaço entre "Inicio" e "Atividades"
   },
+  textIcon:{
+    marginLeft:150,
+    marginTop:18,
+    fontSize:16,
+  },
+  iconStyle:{
+    marginTop:15,
+  }
 });

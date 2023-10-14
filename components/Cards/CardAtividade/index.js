@@ -1,6 +1,7 @@
 import 'moment/locale/pt-br';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import Moment from 'moment';
@@ -51,7 +52,7 @@ export function CardAtividade({ data }) {
             </Text>
             <TouchableOpacity onPress={() => push(`/atividades/${data.id}`)}>
             <View style={styles.iconSeta}>
-                <Feather name="book-open" color="orange" size={30} />
+              <AntDesign name="rightcircleo" size={24} color="0F2552" />
                 </View>
             </TouchableOpacity>
 
