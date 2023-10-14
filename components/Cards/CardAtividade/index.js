@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import Moment from 'moment';
 import React, { useState } from 'react';
-
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get("screen");
 
@@ -38,10 +38,10 @@ export function CardAtividade({ data }) {
         >
          
           <View style={styles.cardHeaderContainer}>
-            <Feather name="book-open" color="orange" size={30} />
+          <MaterialCommunityIcons name="book-edit-outline" size={29} color="black" style={styles.iconBook}/>
             <View>
-              <Text style={styles.title}>Prazo de entrega:</Text>
-              <Text style={styles.title}>
+              <Text style={[styles.title, { color: '#0F2552' }]}>Prazo de entrega:</Text>
+              <Text style={[styles.title, { color: '#0F2552' }]}>
                 {Moment(data.dataFim).format("llll")}
               </Text>
             </View>
@@ -52,7 +52,7 @@ export function CardAtividade({ data }) {
             </Text>
             <TouchableOpacity onPress={() => push(`/atividades/${data.id}`)}>
             <View style={styles.iconSeta}>
-              <AntDesign name="rightcircleo" size={24} color="0F2552" />
+              <AntDesign name="rightcircleo" size={24} color="#0F2552" />
                 </View>
             </TouchableOpacity>
 
@@ -62,8 +62,6 @@ export function CardAtividade({ data }) {
           
         </View> 
        
-       
-        
   );
 }
 
@@ -92,6 +90,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     padding: 20,
     marginVertical: 8,
+    marginHorizontal: 4, // Espaçamento horizontal
+    marginBottom: 25, // Espaçamento vertical
+
+    
   },
   cardContainerIos: {
     shadowOffset: { width: 2, height: 4 },
@@ -109,11 +111,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 15,
-    fontWeight: '600'
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: -150,
   },
   iconSeta:{
     marginLeft: 300, 
     fontSize: 16,
+  },
+  iconBook:{
+    marginLeft: -85,
   }
+  
+  
 });

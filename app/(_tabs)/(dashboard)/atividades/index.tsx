@@ -6,7 +6,7 @@ import { Atividade } from "../../../../models/Atividade";
 import { API } from "../../../../http/API";
 import { AntDesign } from '@expo/vector-icons';
 import moment from "moment";
-        
+
 
 export default function Atividades(){
   const route = useRouter();
@@ -68,7 +68,7 @@ export default function Atividades(){
           style={styles.rotaItem}
           onPress={() => {  }}
         >
-          <Text style={styles.rotaText}>Atividades</Text>
+          <Text style={[styles.rotaText, { color: 'orange' }]}>Ativdades</Text>
         </TouchableOpacity>
 
         <Text style={styles.textIcon}>por data</Text>
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
     marginTop:10,
   },
   rotaText: {
-    
     marginTop:10,
     textDecorationLine: "underline",
+    
   },
   rotaSeparator: {
     marginTop:22,
-    paddingHorizontal: -10, // Adicione espaço entre "Inicio" e "Atividades"
+    paddingHorizontal: -10, 
   },
   textIcon:{
     marginLeft:150,
