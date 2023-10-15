@@ -62,8 +62,6 @@ const CardNoticia = ({topico, usuarioId, usuarioRole}: TopicoProps) => {
             </Text>
           </View>
 
-
-
           <Text numberOfLines={descricaoExpandida ? undefined :2} style={styles.cardDescription}>
             {topico.descricao}
           </Text>
@@ -142,7 +140,8 @@ const styles = StyleSheet.create({
   },
 
   cardHeaderInfo: {
-    textTransform: 'capitalize', color: 'gray', fontSize: 12
+    textTransform: 'capitalize', color: 'gray', fontSize: 12,
+    marginTop: -7,
   },
   cardTitle: {
     fontWeight: '600',
@@ -177,8 +176,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
   },
   cardImage: {
-    width: '100%', // Defina a largura da imagem conforme necessário
-    height: 200, // Defina a altura da imagem conforme necessário
-    resizeMode: 'cover', // Ajuste o modo de redimensionamento conforme necessário
+    width: '100%', 
+    height: 200,
+    resizeMode: 'cover', 
   },
 })
