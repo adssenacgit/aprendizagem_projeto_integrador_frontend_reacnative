@@ -1,5 +1,5 @@
 import { Alert, Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
 import { useRouter } from 'expo-router'
 import Moment from 'moment';
 import 'moment/locale/pt-br';
@@ -15,6 +15,10 @@ type TopicoProps = {
 
 const CardNoticia = ({topico, usuarioId, usuarioRole}: TopicoProps) => {
   const { push, replace } = useRouter()
+  const [descricaoExpandida, setDescricaoExpandida] = useState(false);
+  function toggleDescricaoExpandida() {
+    setDescricaoExpandida(!descricaoExpandida);
+  }
 
   const showConfirmDeleteDialog = (id: string | number) => {
     return Alert.alert(
@@ -48,9 +52,23 @@ const CardNoticia = ({topico, usuarioId, usuarioRole}: TopicoProps) => {
               <Text style={styles.cardHeaderInfo}>{topico.autor} - {Moment(topico.data).startOf('minute').fromNow()}</Text>
               </View>
             </View>
-            <Text numberOfLines={2} style={styles.cardTitle}>{topico.titulo}</Text>
+            <Text numberOfLines={2} style={styles.cardTitle}>
+              {topico.titulo}
+            </Text>
           </View>
-          <Text numberOfLines={2} style={styles.cardDescription}>{topico.descricao}</Text>
+
+
+
+          <Text numberOfLines={descricaoExpandida ? undefined :2} style={styles.cardDescription}>
+            {topico.descricao}
+          </Text>
+          {topico.descricao.length > 100 && (
+            <TouchableOpacity onPress={toggleDescricaoExpandida} style={styles.lerMaisButton}>
+              <Text style={{ color: 'blue' }}>
+                {descricaoExpandida ? 'Ler menos' : 'Ler mais'}
+              </Text>
+            </TouchableOpacity>
+          )}
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
 
           <View  style={styles.cardIconsContainer}>
@@ -140,5 +158,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 3
-  }
+  },
+  lerMaisButton: {
+    backgroundColor: 'white', 
+    padding: 5, 
+    borderRadius: 5, 
+    alignSelf: 'flex-start', 
+  },
 })
