@@ -18,24 +18,26 @@ const Feed = () => {
     {
       id: 1,
       titulo: 'Noticia 1',
-      descricao: 'Descrição da noticia 1',
+      descricao: 'Descrição da noticia 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id tempor tortor, ac sodales eros. Vivamus tristique accumsan lectus sit amet tristique. Vivamus rhoncus mauris lacus, eget maximus ligula viverra in. Nullam congue ultrices rhoncus. Phasellus interdum auctor leo, sed malesuada dolor maximus id. Etiam aliquam sit amet augue vitae hendrerit. Maecenas nibh odio, interdum at risus vitae, varius efficitur tortor. Sed sed ante augue. Phasellus semper fringilla bibendum.',
       data: new Date(),
       autor: 'Autor 1',
       autorId: "1",
       tags: ['tag1', 'tag2'],
-      imagem: 'https://picsum.photos/200',
+      imagem: 'https://www.rj.senac.br/wp-content/uploads/2021/03/Senac-RJ-Unidade-Botafogo.jpg',
       link: 'https://google.com',
+      showFullDescription: false
     },
     {
       id: 2,
       titulo: 'Noticia 2',
-      descricao: 'Descrição da noticia 2',
+      descricao: 'Descrição da noticia 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id tempor tortor, ac sodales eros. Vivamus tristique accumsan lectus sit amet tristique. Vivamus rhoncus mauris lacus, eget maximus ligula viverra in. Nullam congue ultrices rhoncus. Phasellus interdum auctor leo, sed malesuada dolor maximus id. Etiam aliquam sit amet augue vitae hendrerit. Maecenas nibh odio, interdum at risus vitae, varius efficitur tortor. Sed sed ante augue. Phasellus semper fringilla bibendum.',
       data: new Date(),
       autor: 'Autor 2',
       autorId: "2",
       tags: ['tag1', 'tag2'],
-      imagem: 'https://picsum.photos/200',
+      imagem: 'https://picsum.photos/201',
       link: 'https://google.com',
+      showFullDescription: false
     },
     {
       id: 3,
@@ -45,8 +47,9 @@ const Feed = () => {
       autor: 'Autor 3',
       autorId: "3",
       tags: ['tag1', 'tag2'],
-      imagem: 'https://picsum.photos/200',
+      imagem: 'https://picsum.photos/202',
       link: 'https://google.com',
+      showFullDescription: false
     },
   ]
 

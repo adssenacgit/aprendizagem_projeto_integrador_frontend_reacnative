@@ -44,6 +44,7 @@ const NoticiaDetails = () => {
       tags: ['tag1', 'tag2'],
       imagem: 'https://picsum.photos/200',
       link: 'https://google.com',
+      showFullDescription: false
     }
 
 

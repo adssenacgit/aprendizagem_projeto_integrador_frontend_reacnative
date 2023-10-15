@@ -8,4 +8,5 @@ export type Noticia = {
     tags: string[],
     imagem: string,
     link: string,
+    showFullDescription: boolean;
   }
