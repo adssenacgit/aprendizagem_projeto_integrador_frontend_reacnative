@@ -1,4 +1,4 @@
-import { Alert, Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Dimensions, Platform, StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { useState } from 'react';
 import { useRouter } from 'expo-router'
 import Moment from 'moment';
@@ -41,7 +41,12 @@ const CardNoticia = ({topico, usuarioId, usuarioRole}: TopicoProps) => {
   return (
     <View style={styles.topicosContainer}>
       <TouchableOpacity onPress={() => push(`/noticias/${topico.id}`)}>
+
         <View style={styles.cardContainer}>
+        <Image
+            source={{ uri: topico.imagem }}
+            style={styles.cardImage} 
+          />
           <View  style={styles.cardHeaderContainer}>
             <View style={{flexDirection: 'row', gap: 4, alignItems: 'center'}}>
               <View style={{borderRadius: 50, backgroundColor: 'gray', width: 18, alignItems:'center', justifyContent:'center', paddingBottom: 2}}>
@@ -64,8 +69,8 @@ const CardNoticia = ({topico, usuarioId, usuarioRole}: TopicoProps) => {
           </Text>
           {topico.descricao.length > 100 && (
             <TouchableOpacity onPress={toggleDescricaoExpandida} style={styles.lerMaisButton}>
-              <Text style={{ color: 'blue' }}>
-                {descricaoExpandida ? 'Ler menos' : 'Ler mais'}
+              <Text style={[{ color: 'blue' }, styles.lerMaisButtonText]}>
+                {descricaoExpandida ? 'Ler menos' : 'Ler mais...'}
               </Text>
             </TouchableOpacity>
           )}
@@ -160,9 +165,20 @@ const styles = StyleSheet.create({
     gap: 3
   },
   lerMaisButton: {
-    backgroundColor: 'white', 
+    
+    backgroundColor: 'blue', 
     padding: 5, 
-    borderRadius: 5, 
-    alignSelf: 'flex-start', 
+    borderRadius: 15, 
+    alignSelf: 'flex-end', 
+
+  },
+  lerMaisButtonText: {
+    color: 'white', 
+    fontWeight: 'bold', 
+  },
+  cardImage: {
+    width: '100%', // Defina a largura da imagem conforme necessário
+    height: 200, // Defina a altura da imagem conforme necessário
+    resizeMode: 'cover', // Ajuste o modo de redimensionamento conforme necessário
   },
 })
